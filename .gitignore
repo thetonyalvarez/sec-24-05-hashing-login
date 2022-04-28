@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+solution/
+instructions.md
+venv/
+__pycache__/
+*/__pycache__/
