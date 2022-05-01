@@ -1,0 +1,33 @@
+/* navbar */
+.navbar-brand img {
+    max-width: 120px;
+}
+
+/* user page */
+.feedback-list-wrapper {
+    margin-bottom:10px;
+}
+
+.feedback-actions {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.feedback-actions > a {
+    margin-right:5px;
+}
+
+/* flash message handling */
+.alert-error {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
+.alert-success {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #28a745;
+}

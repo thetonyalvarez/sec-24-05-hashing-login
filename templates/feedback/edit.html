@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block description %}Edit Feedback for {{user.username}}{% endblock %}
+{% block title %}Edit Feedback{% endblock %}
+
+{% block content %}
+
+{% include "_flash_msg.html" %}
+
+<section class="container">
+    <h1>Edit Your Feedback</h1>
+    <p>Form created for <a href="/users/{{user.username}}">{{user.username}}</a></p>
+</section>
+
+<section class="container">
+    <form method="post" action="/feedback/{{feedback.id}}/update">
+        
+        <!-- Implement CSRF protection -->
+        {{ form.hidden_tag() }}
+
+        {% for field in form
+            if field.widget.input_type != 'hidden' %}
+
+            <div class="form-group">
+                {{field.label}}
+                {{field(class_="form-control")}}
+            </div>
+            {% for error in field.errors %}
+            {{ error }}
+            {% endfor %}
+        {% endfor %}
+        <button class="btn btn-success" type="submit">Save Changes</button>
+
+    </form>
+</section>
+
+{% endblock %}

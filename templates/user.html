@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block description %}{{user}}{% endblock %}
+{% block title %}{{ user }}{% endblock %}
+
+{% block content %}
+
+{% include '_flash_msg.html' %}
+
+<section class="container my-4">
+    <h1>User Details</h1>
+    <h2>Basic Details</h2>
+    <p class="display-4">Welcome, {{ user.first_name }} {{ user.last_name }}</p>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+</section>
+
+<section class="container">
+    <h2>User Feedback</h2>
+    {% if user.feedback %}
+    <div class="feedback-list-wrapper">
+        {% for fb in user.feedback %}
+        <div class="card mb-2">
+            <div class="card-body">
+                <div class="feedback-item">
+                    <h3>{{ fb.title }}</h3>
+                    <p>{{ fb.content }}</p>
+                    <div class="feedback-actions">
+                        <a class="btn btn-outline-primary btn-sm" href="/feedback/{{fb.id}}/update">Edit</a>
+                        <form method="post" action="/feedback/{{fb.id}}/delete">
+                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No feedback yet.</p>
+    </div>
+    {% endif %}
+    <a class="btn btn-primary" href="/users/{{user.username}}/feedback/add">Add Feedback</a>
+</section>
+{% endblock %}
